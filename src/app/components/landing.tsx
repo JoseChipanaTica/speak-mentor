@@ -126,7 +126,11 @@ function FooterPage() {
         </p>
         <ul className="flex flex-wrap justify-center items-center mb-6 text-white">
           <li>
-            <a href="" target="_blank" className="mr-4 hover:underline md:mr-6 ">
+            <a
+              href="https://github.com/JoseChipanaTica/speak-mentor"
+              target="_blank"
+              className="mr-4 hover:underline md:mr-6 "
+            >
               Github
             </a>
           </li>
