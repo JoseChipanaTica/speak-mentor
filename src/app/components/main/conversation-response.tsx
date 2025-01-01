@@ -3,6 +3,7 @@
 
 import { useMessageHook } from '@/hooks/message.hook'
 import { PlayCircleIcon } from 'lucide-react'
+import Image from 'next/image'
 import { useEffect } from 'react'
 import { AudioRecording } from './audio-recording'
 
@@ -37,7 +38,7 @@ export function ConversationResponse() {
             </span>
             <div className="avatar">
               <div className="ring-primary ring-offset-base-100 w-24 rounded-full ring ring-offset-2">
-                <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                <Image src="/avatar.jpg" width={80} height={80} alt="Avatar" />
               </div>
             </div>
           </div>
