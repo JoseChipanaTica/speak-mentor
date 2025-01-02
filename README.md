@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SpeakMentor
 
-## Getting Started
+SpeakMentor is an open-source platform designed to help users practice languages in an interactive and engaging way. Powered by AI, SpeakMentor provides personalized conversations, feedback, and exercises to improve language fluency and confidence.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **AI-Powered Conversations**: Chat with an AI that provides realistic language practice.
+- **Pronunciation Feedback**: Receive instant feedback on your pronunciation to help you sound more natural.
+- **Open Source**: Contribute to the project and help build the future of language learning.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Demo
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+![SpeakMentor Screenshot](public/feature.png)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Try the live demo here: [SpeakMentor Demo](https://speak-mentor.vercel.app/)
 
-## Learn More
+## Installation
 
-To learn more about Next.js, take a look at the following resources:
+To run SpeakMentor locally, follow these steps:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Prerequisites
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- [Next.js](https://nextjs.org/)
+- [Supabase](https://supabase.com/)
+- [OpenAI](https://openai.com/)
+- [ElevenLabs](https://elevenlabs.io/)
 
-## Deploy on Vercel
+### Steps
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Clone the repository:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   ```bash
+   git clone https://github.com/yourusername/speakmentor.git
+   cd speakmentor
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   pnpm install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   pnpm run dev
+   ```
+
+4. Open your browser and navigate to:
+
+   ```
+   http://localhost:3000
+   ```
+
+## Deployment
+
+To deploy SpeakMentor using Next.js:
+
+1. Build the application:
+
+   ```bash
+   pnpm run build
+   ```
+
+2. Start the production server:
+
+   ```bash
+   pnpm start
+   ```
+
+3. For hosting, you can use platforms like [Vercel](https://vercel.com/). Simply connect your repository and follow their deployment guides.
+
+## License
+
+SpeakMentor is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute this project as per the license terms.
+
+## Roadmap
+
+- Add support for more languages.
+- Improve AI feedback for grammar and vocabulary.
+- Introduce gamification elements (e.g., badges, leaderboards).
+
+## Contact
+
+For questions, feedback, or suggestions, feel free to reach out:
+
+- Email: josepaulct@gmail.com
+- GitHub Issues: [Open an Issue](https://github.com/yourusername/speakmentor/issues)
+- X: [@JosePaulCT](https://x.com/josepaulct)
+
+---
