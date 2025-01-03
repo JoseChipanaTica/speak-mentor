@@ -41,8 +41,8 @@ export const NextjsIcon = (props: object) => (
 
 export const LogoIcon = (props: object) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24" {...props}>
-    <g fill="none" stroke="currentColor" strokeWidth="1.5">
-      <rect width="6" height="12" x="9" y="2" fill="currentColor" rx="3"></rect>
+    <g fill="none" stroke="#FFFFFF" strokeWidth="1.5">
+      <rect width="6" height="12" x="9" y="2" fill="#FFFFFF" rx="3"></rect>
       <path
         strokeLinecap="round"
         strokeLinejoin="round"

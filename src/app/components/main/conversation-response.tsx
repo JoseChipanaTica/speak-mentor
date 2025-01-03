@@ -24,8 +24,8 @@ export function ConversationResponse() {
   }, [message.audioUrl])
 
   return (
-    <div className="h-full w-full basis-3/4 overflow-auto">
-      <div className="w-full h-full flex flex-col overflow-auto">
+    <div className="h-full w-full basis-3/4 p-8">
+      <div className="w-full h-full flex flex-col">
         <div className="w-full h-full flex flex-col justify-center content-center items-center space-y-8">
           <div className="indicator">
             <span className="indicator-item">
@@ -45,7 +45,7 @@ export function ConversationResponse() {
 
           <div className="lg:px-48 text-center">
             <span
-              className="text-2xl lg:text-3xl font-bold text-white cursor-pointer tooltip tooltip-secondary hover:text-secondary"
+              className="text-xl lg:text-3xl font-bold text-white cursor-pointer tooltip tooltip-secondary hover:text-secondary"
               data-tip={message.response_translated}
             >
               {message.response}

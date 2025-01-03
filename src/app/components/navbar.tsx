@@ -36,9 +36,9 @@ export function Navbar() {
   }, [])
 
   return (
-    <header>
-      <nav className="border-gray-200 px-4 lg:px-6 py-4">
-        <div className="flex flex-wrap justify-between items-center">
+    <header className="px-10 pt-10">
+      <nav className="border border-gray-800/50 bg-gray-800/50 rounded-lg px-4 lg:px-6 py-4 overflow-auto">
+        <div className="flex flex-row space-x-4 md:space-x-0 md:flex-wrap justify-between items-center">
           <Link href="/" className="flex items-center space-x-4">
             <LogoIcon />
             <span className="self-center text-xl font-semibold whitespace-nowrap text-white">SpeakMentor</span>

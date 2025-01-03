@@ -52,7 +52,7 @@ export function ConversationConfig() {
   }
 
   return (
-    <div className="w-full px-36 flex flex-col space-y-4 justify-center items-center">
+    <div className="w-full h-full basis-1/2 flex flex-col space-y-4 justify-center items-center px-8 md:px-36">
       <input
         className="input input-bordered w-full"
         placeholder="Topic"

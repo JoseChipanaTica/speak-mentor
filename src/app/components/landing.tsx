@@ -13,7 +13,8 @@ function HeroPage() {
     <section className="text-white">
       <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12 space-y-10">
         <Link
-          href="#"
+          href="https://github.com/JoseChipanaTica/speak-mentor"
+          target="_blank"
           className="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-gray-700 bg-gray-100 rounded-full dark:bg-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700"
           role="alert"
         >
@@ -116,37 +117,28 @@ function CTAPage() {
 
 function FooterPage() {
   return (
-    <footer className="p-4 md:p-8 lg:p-10 dark:bg-neutral border-t border-gray-600/50">
-      <div className="mx-auto max-w-screen-xl text-center">
+    <footer className="py-4 border-t border-gray-600/20">
+      <div className="mx-auto max-w-screen-xl text-center flex justify-between">
         <a href="#" className="flex justify-center items-center text-2xl font-semibold text-white">
           SpeakMentor
         </a>
-        <p className="my-6 text-gray-400">
-          SpeakMentorAI is an open-source project that helps you practice your speaking skills.
-        </p>
-        <ul className="flex flex-wrap justify-center items-center mb-6 text-white">
-          <li>
-            <a
+
+        <div className="flex justify-center items-center content-center text-white">
+          <div>
+            <Link
               href="https://github.com/JoseChipanaTica/speak-mentor"
               target="_blank"
               className="mr-4 hover:underline md:mr-6 "
             >
               Github
-            </a>
-          </li>
-          <li>
-            <a href="https://x.com/josepaulct" target="_blank" className="mr-4 hover:underline md:mr-6">
+            </Link>
+          </div>
+          <div>
+            <Link href="https://x.com/josepaulct" target="_blank" className="mr-4 hover:underline md:mr-6">
               X
-            </a>
-          </li>
-        </ul>
-        <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-          © 2024{' '}
-          <a href="#" className="hover:underline">
-            SpeakMentorAI
-          </a>
-          . All Rights Reserved.
-        </span>
+            </Link>
+          </div>
+        </div>
       </div>
     </footer>
   )
@@ -154,11 +146,11 @@ function FooterPage() {
 
 export function LandingPage() {
   return (
-    <>
+    <div className="p-10 md:p-0">
       <HeroPage />
       <ContentPage />
       <CTAPage />
       <FooterPage />
-    </>
+    </div>
   )
 }

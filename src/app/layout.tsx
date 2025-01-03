@@ -14,7 +14,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body>
-        <div className="w-screen h-screen flex flex-col text-white">
+        <div className="w-screen h-screen flex flex-col">
           <Navbar />
           {children}
         </div>

@@ -9,9 +9,9 @@ export function ConversationFeedback() {
   }
 
   return (
-    <div className="h-full w-full basis-1/4 md:border-l border-gray-600/50 px-4 py-6">
+    <div className="h-full w-full basis-1/4 px-4 py-6 bg-gray-800/20">
       <div className="w-full h-full flex flex-col space-y-4">
-        <div className="flex space-x-4">
+        <div className="flex space-x-4 overflow-auto">
           <div className="stat">
             <div className={`stat-figure ${message.pronunciationScore > 70 ? 'text-primary' : 'text-error'}`}>
               <svg
