@@ -15,7 +15,7 @@ export default function Home() {
         {message ? (
           <div className="md:w-full md:h-full flex flex-col md:flex-row border border-gray-800/50 rounded-lg">
             <div className="indicator w-full">
-              <span className="indicator-item cursor-pointer bg-red-600 p-2 rounded-lg">
+              <span className="indicator-item cursor-pointer bg-red-600 p-2 rounded-lg text-white">
                 <TrashIcon
                   onClick={() => {
                     updateMessage(undefined)

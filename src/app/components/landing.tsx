@@ -69,7 +69,7 @@ function ContentPage() {
             SpeakMentor helps you practice your speaking skills by providing feedback on your pronunciation and grammar.
           </p>
         </div>
-        <div className="p-4">
+        <div className="p-4 bg-gray-800 rounded-lg">
           <Image
             className="w-full rounded-lg shadow-lg shadow-primary"
             src="/feature.png"
