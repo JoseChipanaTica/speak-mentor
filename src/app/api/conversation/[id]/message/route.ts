@@ -1,12 +1,12 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { SpeakMessage } from '@/managers/speak-response'
-import { SpeechToTextOpenAI } from '@/managers/speech-to-text'
+import { SpeechToTextGroq } from '@/managers/speech-to-text'
 import { TextToSpeech } from '@/managers/text-to-speech'
 import { DBClient } from '@/providers/supabase/server'
 import { uploadFile } from '@/providers/supabase/storage'
 
 export async function POST(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
+    console.time('Conversation')
     const { id } = await params
 
     const access_token = request.headers.get('access_token')
@@ -28,12 +28,10 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
       return new Response(JSON.stringify({ error: 'User not found' }), { status: 404 })
     }
 
-    const { data: conversation, error }: { data: conversationResponse | null; error: any } = await db.client
-      .from('conversations')
-      .select('*')
-      .eq('id', id)
-      .single()
-    const { data: messages } = await db.client.from('messages').select('*').eq('conversation_id', id)
+    const [{ data: conversation, error }, { data: messages }] = await Promise.all([
+      db.client.from('conversations').select('*').eq('id', id).single(),
+      db.client.from('messages').select('*').eq('conversation_id', id)
+    ])
 
     if (!conversation || error) {
       return new Response('Conversation not found', { status: 404 })
@@ -41,7 +39,8 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
 
     const history = messages ? messages.map(message => ({ content: message.content, role: message.role })) : []
 
-    const transcript = await SpeechToTextOpenAI(audio)
+    const file = new File([audio], 'audio.mp3', { type: 'audio/mp3' })
+    const transcript = await SpeechToTextGroq(file)
 
     if (!transcript) {
       return new Response('Transcript error', { status: 500 })
@@ -68,12 +67,13 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
     const alternatives = await Promise.all(
       response.alternatives.map(async alternative => {
         const audioBlob = await TextToSpeech(alternative.alternative)
-        const audioUrl = await uploadFile(audioBlob, 'mp3')
-        return { ...alternative, audioUrl }
+        const audioUrlAlt = await uploadFile(audioBlob, 'mp3')
+        return { ...alternative, audioUrl: audioUrlAlt }
       })
     )
 
     const messageResponse: speakMessageResponse = {
+      transcript: transcript.text,
       audioUrl: audioUrl,
       response: response.response,
       response_translated: response.responseTranslation,

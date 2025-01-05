@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 type speakMessageResponse = {
+  transcript: string
   audioUrl: string
   response: string
   response_translated: string

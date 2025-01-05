@@ -3,10 +3,13 @@ lockfileVersion: '6.0'
 dependencies:
   '@langchain/community':
     specifier: ^0.3.20
-    version: 0.3.20(@browserbasehq/stagehand@1.8.0)(@ibm-cloud/watsonx-ai@1.3.0)(@langchain/core@0.3.26)(@supabase/supabase-js@2.47.10)(assemblyai@4.8.0)(axios@1.7.4)(ibm-cloud-sdk-core@5.1.0)(openai@4.77.0)
+    version: 0.3.20(@browserbasehq/stagehand@1.8.0)(@ibm-cloud/watsonx-ai@1.3.0)(@langchain/core@0.3.26)(@langchain/groq@0.1.2)(@supabase/supabase-js@2.47.10)(assemblyai@4.8.0)(axios@1.7.4)(ibm-cloud-sdk-core@5.1.0)(openai@4.77.0)
   '@langchain/core':
     specifier: ^0.3.26
     version: 0.3.26(openai@4.77.0)
+  '@langchain/groq':
+    specifier: ^0.1.2
+    version: 0.1.2(@langchain/core@0.3.26)
   '@langchain/openai':
     specifier: ^0.3.16
     version: 0.3.16(@langchain/core@0.3.26)
@@ -28,6 +31,9 @@ dependencies:
   elevenlabs:
     specifier: ^1.50.2
     version: 1.50.2
+  groq-sdk:
+    specifier: ^0.9.1
+    version: 0.9.1
   lucide-react:
     specifier: ^0.469.0
     version: 0.469.0(react@19.0.0)
@@ -463,7 +469,7 @@ packages:
       '@jridgewell/sourcemap-codec': 1.5.0
     dev: true
 
-  /@langchain/community@0.3.20(@browserbasehq/stagehand@1.8.0)(@ibm-cloud/watsonx-ai@1.3.0)(@langchain/core@0.3.26)(@supabase/supabase-js@2.47.10)(assemblyai@4.8.0)(axios@1.7.4)(ibm-cloud-sdk-core@5.1.0)(openai@4.77.0):
+  /@langchain/community@0.3.20(@browserbasehq/stagehand@1.8.0)(@ibm-cloud/watsonx-ai@1.3.0)(@langchain/core@0.3.26)(@langchain/groq@0.1.2)(@supabase/supabase-js@2.47.10)(assemblyai@4.8.0)(axios@1.7.4)(ibm-cloud-sdk-core@5.1.0)(openai@4.77.0):
     resolution: {integrity: sha512-5XmguFWVrfYJ8s9kHPAmC1bTGfdVOKqzWVCoTolSXMVMDaVn+LVvCJxEedO01kU1y2AS4pUl5MDI9wssKS1Ehg==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -848,7 +854,7 @@ packages:
       flat: 5.0.2
       ibm-cloud-sdk-core: 5.1.0
       js-yaml: 4.1.0
-      langchain: 0.3.8(@langchain/core@0.3.26)(axios@1.7.4)(openai@4.77.0)
+      langchain: 0.3.8(@langchain/core@0.3.26)(@langchain/groq@0.1.2)(axios@1.7.4)(openai@4.77.0)
       langsmith: 0.2.14(openai@4.77.0)
       openai: 4.77.0(zod@3.24.1)
       uuid: 10.0.0
@@ -887,6 +893,21 @@ packages:
       zod-to-json-schema: 3.24.1(zod@3.24.1)
     transitivePeerDependencies:
       - openai
+    dev: false
+
+  /@langchain/groq@0.1.2(@langchain/core@0.3.26):
+    resolution: {integrity: sha512-bgQ9yGoNHOwG6LG2ngGvSNxF/1U1c1u3vKmFWmzecFIcBoQQOJY0jb0MrL3g1uTife0Sr3zxkWKXQg2aK/U4Sg==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@langchain/core': '>=0.2.21 <0.4.0'
+    dependencies:
+      '@langchain/core': 0.3.26(openai@4.77.0)
+      '@langchain/openai': 0.3.16(@langchain/core@0.3.26)
+      groq-sdk: 0.5.0
+      zod: 3.24.1
+      zod-to-json-schema: 3.24.1(zod@3.24.1)
+    transitivePeerDependencies:
+      - encoding
     dev: false
 
   /@langchain/openai@0.3.16(@langchain/core@0.3.26):
@@ -2685,6 +2706,35 @@ packages:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
     dev: true
 
+  /groq-sdk@0.5.0:
+    resolution: {integrity: sha512-RVmhW7qZ+XZoy5fIuSdx/LGQJONpL8MHgZEW7dFwTdgkzStub2XQx6OKv28CHogijdwH41J+Npj/z2jBPu3vmw==}
+    dependencies:
+      '@types/node': 18.19.68
+      '@types/node-fetch': 2.6.12
+      abort-controller: 3.0.0
+      agentkeepalive: 4.6.0
+      form-data-encoder: 1.7.2
+      formdata-node: 4.4.1
+      node-fetch: 2.7.0
+      web-streams-polyfill: 3.3.3
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
+  /groq-sdk@0.9.1:
+    resolution: {integrity: sha512-yFZ3+I0Oe/u+4PUKDUG8q5KpP9Hgc+ujhlBaAbcc4EMJb2RMn/atqG8i+Vnk7s+2K4rJ49mviO/kY0i9LbskCA==}
+    dependencies:
+      '@types/node': 18.19.68
+      '@types/node-fetch': 2.6.12
+      abort-controller: 3.0.0
+      agentkeepalive: 4.6.0
+      form-data-encoder: 1.7.2
+      formdata-node: 4.4.1
+      node-fetch: 2.7.0
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
   /has-bigints@1.1.0:
     resolution: {integrity: sha512-R3pbpkcIqv2Pm3dUwgjclDRVmWpTJW2DcMzcIhEXEx1oh/CEMObMm3KLmRJOdvhM7o4uQBnwr8pzRK2sJWIqfg==}
     engines: {node: '>= 0.4'}
@@ -3128,7 +3178,7 @@ packages:
       json-buffer: 3.0.1
     dev: true
 
-  /langchain@0.3.8(@langchain/core@0.3.26)(axios@1.7.4)(openai@4.77.0):
+  /langchain@0.3.8(@langchain/core@0.3.26)(@langchain/groq@0.1.2)(axios@1.7.4)(openai@4.77.0):
     resolution: {integrity: sha512-EiAHFgBdThuXFmIx9j81wjdPItpRsw0Ck4r5dyhB74gyhehRGna/UK2CTqeKVnIUM/f4g4JbxUgAU4voXljDMw==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -3175,6 +3225,7 @@ packages:
         optional: true
     dependencies:
       '@langchain/core': 0.3.26(openai@4.77.0)
+      '@langchain/groq': 0.1.2(@langchain/core@0.3.26)
       '@langchain/openai': 0.3.16(@langchain/core@0.3.26)
       '@langchain/textsplitters': 0.1.0(@langchain/core@0.3.26)
       axios: 1.7.4(debug@4.4.0)
@@ -4545,6 +4596,11 @@ packages:
   /uuid@10.0.0:
     resolution: {integrity: sha512-8XkAphELsDnEGrDxUOHB3RGvXz6TeuYSGEZBOjtTtPm2lwhGBjLgOzLHB63IUWfBpNucQjND6d3AOudO+H3RWQ==}
     hasBin: true
+    dev: false
+
+  /web-streams-polyfill@3.3.3:
+    resolution: {integrity: sha512-d2JWLCivmZYTSIoge9MsgFCZrt571BikcWGYkjC1khllbTeDlGqZ2D8vD8E/lJa8WGWbb7Plm8/XJYV7IJHZZw==}
+    engines: {node: '>= 8'}
     dev: false
 
   /web-streams-polyfill@4.0.0-beta.3:

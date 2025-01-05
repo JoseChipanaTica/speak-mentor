@@ -1,13 +1,15 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/rules-of-hooks */
 'use client'
 
 import { useMessageHook } from '@/hooks/message.hook'
 import { PlayCircleIcon } from 'lucide-react'
 import Image from 'next/image'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { AudioRecording } from './audio-recording'
 
 export function ConversationResponse() {
+  const [isPlaying, setIsPlaying] = useState(false)
   const { message } = useMessageHook()
 
   if (!message) {
@@ -15,8 +17,16 @@ export function ConversationResponse() {
   }
 
   const playAudio = () => {
+    if (isPlaying) {
+      return
+    }
+
     const audio = new Audio(message.audioUrl)
     audio.play()
+    audio.onended = () => {
+      setIsPlaying(false)
+    }
+    setIsPlaying(true)
   }
 
   useEffect(() => {
@@ -43,7 +53,8 @@ export function ConversationResponse() {
             </div>
           </div>
 
-          <div className="lg:px-48 text-center">
+          <div className="lg:px-48 text-center flex flex-col space-y-4">
+            <span className="text-gray-600">{message.transcript}</span>
             <span
               className="text-xl lg:text-3xl font-bold text-white cursor-pointer tooltip tooltip-secondary hover:text-secondary"
               data-tip={message.response_translated}

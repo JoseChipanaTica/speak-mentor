@@ -1,5 +1,6 @@
 import { AIMessage, HumanMessage, SystemMessage } from '@langchain/core/messages'
 import { ChatOpenAI } from '@langchain/openai'
+
 import { z } from 'zod'
 
 export class SpeakMessage {
@@ -10,11 +11,7 @@ export class SpeakMessage {
   model: ChatOpenAI
 
   constructor(history: { content: string; role: string }[], firstLanguage: string, targetLanguage: string) {
-    if (this.history.length > 10) {
-      this.history = this.history.slice(-10)
-    } else {
-      this.history = history
-    }
+    this.history = history
 
     this.firstLanguage = firstLanguage
     this.targetLanguage = targetLanguage
@@ -37,7 +34,7 @@ export class SpeakMessage {
 
       Response:
       - response: the response to the input. This could be a question, a statement, or a suggestion. A sentence to continue the conversation. It should be in the target language: ${this.targetLanguage}
-      - feedback: feedback on the user input. This could be a suggestion for improvement, a comment on the quality of the user input. It should be in the first language: ${this.firstLanguage}
+      - feedback: User's input feedback. This could be a suggestion for improvement, rephrase, a comment on the quality of the user input. It should be in the first language: ${this.firstLanguage}
       - alternatives: alternative responses that users could reply to the generated response
           - alternative: alternative response to the input.
           - translation: translation of the alternative response in the first language. ${this.firstLanguage}
@@ -57,7 +54,11 @@ export class SpeakMessage {
     return z.object({
       response: z.string().describe('the response to the input'),
       responseTranslation: z.string().describe('translation of the response in the first language'),
-      feedback: z.string().describe('feedback on the user input'),
+      feedback: z
+        .string()
+        .describe(
+          'feedback about the user input like a suggestion for improvement or a comment on the quality of the input or rephrase'
+        ),
       alternatives: z
         .array(
           z.object({

@@ -61,6 +61,7 @@ export async function POST(request: Request) {
     )
 
     const messageResponse: speakMessageResponse = {
+      transcript: topic,
       audioUrl: audioUrl,
       response: response.response,
       response_translated: response.responseTranslation,

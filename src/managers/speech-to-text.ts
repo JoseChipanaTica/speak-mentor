@@ -1,4 +1,5 @@
 import { AssemblyAI } from 'assemblyai'
+import Groq from 'groq-sdk'
 import OpenAI from 'openai'
 
 export async function SpeechToText(audio: File | Blob) {
@@ -29,4 +30,12 @@ export async function SpeechToTextOpenAI(audio: Blob) {
   })
 
   return transcription
+}
+
+export async function SpeechToTextGroq(audio: File) {
+  const groq = new Groq()
+
+  const transcript = await groq.audio.transcriptions.create({ file: audio, model: 'whisper-large-v3-turbo' })
+
+  return transcript
 }
