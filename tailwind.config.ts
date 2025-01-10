@@ -31,6 +31,6 @@ const config: Config = {
     themeRoot: ':root' // The element that receives theme color CSS variables
   },
   // eslint-disable-next-line @typescript-eslint/no-require-imports
-  plugins: [require('daisyui')]
+  plugins: [require('daisyui'), require('tailwindcss-animate')]
 }
 export default config
